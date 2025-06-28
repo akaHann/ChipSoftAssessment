@@ -60,7 +60,7 @@ namespace Chipsoft.Assignments.EPDConsole
                     Address = address,
                     PostalCode = postalCode,
                     City = city,
-                    InsuranceNumber = string.IsNullOrWhiteSpace(insuranceNumber) ? null : insuranceNumber
+                    InsuranceNumber = string.IsNullOrWhiteSpace(insuranceNumber) ? string.Empty : insuranceNumber
                 };
 
                 using IServiceScope scope = _serviceProvider.CreateScope();
@@ -450,7 +450,7 @@ namespace Chipsoft.Assignments.EPDConsole
             {
                 string notes = string.IsNullOrEmpty(appointment.Notes) ? "-" : (appointment.Notes.Length > 10 ? appointment.Notes.Substring(0, 10) + "..." : appointment.Notes);
                 
-                Console.WriteLine($"{appointment.DateTime:dd/MM/yyyy HH:mm,-20} " +
+                Console.WriteLine($"{appointment.DateTime:dd/MM/yyyy HH:mm} " +
                                   $"{appointment.Patient?.FullName ?? "Onbekend",-25} " +
                                   $"{appointment.Physician?.FullName ?? "Onbekend",-25} " +
                                   $"{notes,-10}");
